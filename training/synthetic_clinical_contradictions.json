@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "HETU_SYN_001",
+    "specialist_a_finding": "Cardiology note lists no known drug allergies and starts an ACE inhibitor.",
+    "specialist_b_finding": "Allergy list from the prior admission documents a cough and rash after an ACE inhibitor, recorded as a possible ACE-inhibitor reaction.",
+    "patient_context": "Adult A is in clinic after discharge. The allergy entry is visible in the shared record from last month.",
+    "contradiction": "New ACE-inhibitor start versus a documented prior possible ACE-inhibitor reaction in the same record.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The prior reaction appears to have been available in the shared allergy list and was not obviously reconciled before prescribing. This may indicate a documentation or communication miss rather than new information from Adult A.",
+    "appropriate_response": "A clinician should review the prior allergy entry before continuing the ACE inhibitor. HETU does not determine whether the prior event was a true allergy. Final prescribing judgment remains with the treating clinician."
+  },
+  {
+    "id": "HETU_SYN_002",
+    "specialist_a_finding": "Orthopedics documents no prior hip surgery on the intake form.",
+    "specialist_b_finding": "Radiology reports hardware consistent with a prior right hip arthroplasty.",
+    "patient_context": "Imaging from today's visit is in the same chart. Adult A was not asked again after the film was read.",
+    "contradiction": "No surgical history versus imaging that may be consistent with prior hip arthroplasty.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The imaging finding appears to have been available in-chart and could reasonably have been used to update surgical history. The gap looks more like incomplete review of accessible imaging than withheld history.",
+    "appropriate_response": "Consider reconciling surgical history with today's radiology report. Hardware on imaging may indicate prior arthroplasty, but a clinician should confirm laterality, date, and clinical relevance."
+  },
+  {
+    "id": "HETU_SYN_003",
+    "specialist_a_finding": "Primary care lists metformin as current therapy.",
+    "specialist_b_finding": "Endocrinology notes metformin was stopped two weeks earlier after gastrointestinal intolerance, documented in the shared med list.",
+    "patient_context": "The stop order is in the electronic med list with a timestamp before today's primary-care visit.",
+    "contradiction": "Active metformin versus a documented recent stop in the same medication list.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The discontinuation appears to have been already recorded and reasonably accessible. Continuing to list it as current may reflect missed med-reconciliation rather than Adult A forgetting the change.",
+    "appropriate_response": "Medication reconciliation with the shared list is warranted. Do not assume nonadherence. A clinician should confirm what Adult A is actually taking."
+  },
+  {
+    "id": "HETU_SYN_004",
+    "specialist_a_finding": "Neurology documents a first seizure and no prior events.",
+    "specialist_b_finding": "Emergency visit from last year, in the same health system, describes a witnessed convulsive episode with similar features.",
+    "patient_context": "The older encounter is searchable in the enterprise chart and was not referenced in today's note.",
+    "contradiction": "First-seizure framing versus a prior similar emergency encounter in-system.",
+    "root_cause": "doctor_gap",
+    "reasoning": "A reasonably accessible prior encounter may have been overlooked. That could represent incomplete chart review rather than Adult A hiding history.",
+    "appropriate_response": "Review the prior emergency note before labeling this a first event. HETU does not diagnose epilepsy. Clinician review of both encounters is appropriate."
+  },
+  {
+    "id": "HETU_SYN_005",
+    "specialist_a_finding": "Discharge summary states blood pressure is controlled on current therapy.",
+    "specialist_b_finding": "Inpatient flowsheet from the same stay shows repeated readings above the team's documented target on the last two days.",
+    "patient_context": "Flowsheet values are in the same admission record used to write the summary.",
+    "contradiction": "Controlled blood pressure in the summary versus repeated above-target readings in the flowsheet.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The flowsheet appears to have been available at discharge documentation time. The mismatch may indicate the summary did not incorporate recent measurements.",
+    "appropriate_response": "Reconcile the discharge statement with the last inpatient readings. Whether therapy is adequate requires clinician judgment, not an automated conclusion."
+  },
+  {
+    "id": "HETU_SYN_006",
+    "specialist_a_finding": "Pulmonology notes no smoking history.",
+    "specialist_b_finding": "Anesthesia preoperative form from six weeks earlier records 20 pack-years, visible in the shared history section.",
+    "patient_context": "Adult A completed the anesthesia form in this system; primary pulmonary intake did not copy it.",
+    "contradiction": "No smoking history versus a recent in-system preoperative smoking entry.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The preoperative form was in the same record and could reasonably have been reviewed. This looks like a documentation handoff miss.",
+    "appropriate_response": "Update smoking history after clinician confirmation. Pack-year counts in another note may be inaccurate; do not treat either note as definitive without review."
+  },
+  {
+    "id": "HETU_SYN_007",
+    "specialist_a_finding": "Nephrology attributes a rising creatinine to dehydration only.",
+    "specialist_b_finding": "Pharmacy notes a new NSAID started last week, documented on the med list used by nephrology.",
+    "patient_context": "The NSAID order is active in the chart at the time of the nephrology assessment.",
+    "contradiction": "Dehydration-only explanation versus a concurrent documented NSAID that may be relevant to kidney function.",
+    "root_cause": "doctor_gap",
+    "reasoning": "An active NSAID appears to have been available and possibly under-weighted. This may indicate incomplete medication review, not that Adult A failed to report the drug.",
+    "appropriate_response": "A clinician should consider the NSAID alongside volume status. HETU does not assign a single cause of creatinine change."
+  },
+  {
+    "id": "HETU_SYN_008",
+    "specialist_a_finding": "Dermatology lists no family history of melanoma.",
+    "specialist_b_finding": "A prior genetics consult in the same record notes a parent with melanoma, entered as family history.",
+    "patient_context": "The genetics note is filed under the same Adult A chart and predates the dermatology visit.",
+    "contradiction": "Empty melanoma family history versus a prior genetics entry of a parent with melanoma.",
+    "root_cause": "doctor_gap",
+    "reasoning": "Family history appears already captured elsewhere in the chart. The dermatology form may not have pulled that field.",
+    "appropriate_response": "Reconcile family history across notes. A clinician should verify the reported relative and diagnosis rather than copying either field automatically."
+  },
+  {
+    "id": "HETU_SYN_009",
+    "specialist_a_finding": "Psychiatry documents no current benzodiazepine use.",
+    "specialist_b_finding": "Controlled-substance fill history in the same EHR shows a recent benzodiazepine dispense.",
+    "patient_context": "Fill history is a standard in-system view and was not mentioned in the psychiatry note.",
+    "contradiction": "No benzodiazepine use versus a recent in-system dispense record.",
+    "root_cause": "doctor_gap",
+    "reasoning": "Dispense data appear reasonably accessible. The contradiction may reflect missed review of fill history rather than Adult A concealing use, though both remain possible until reviewed.",
+    "appropriate_response": "Clinician review of fill history and a nonjudgmental medication interview are appropriate. HETU cannot determine intent or actual ingestion."
+  },
+  {
+    "id": "HETU_SYN_010",
+    "specialist_a_finding": "Infectious disease documents no penicillin allergy.",
+    "specialist_b_finding": "Nursing intake from yesterday records throat swelling after penicillin, entered in allergies.",
+    "patient_context": "Nursing allergy entry is time-stamped before the infectious-disease note.",
+    "contradiction": "No penicillin allergy versus a same-stay nursing entry of swelling after penicillin.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The nursing allergy row appears to have been present before the later note. This may indicate the later documentation did not incorporate an available allergy alert.",
+    "appropriate_response": "Pause and reconcile the allergy list. Whether this represents a true allergy requires clinician assessment, not an automated label."
+  },
+  {
+    "id": "HETU_SYN_011",
+    "specialist_a_finding": "Cardiology stress test request lists no beta-blocker.",
+    "specialist_b_finding": "The active med list used for the order includes a daily beta-blocker started last month.",
+    "patient_context": "The order set and med list sit in the same encounter.",
+    "contradiction": "Stress protocol assuming no beta-blocker versus an active beta-blocker on the encounter med list.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The beta-blocker appears already listed on the encounter used to order testing. Holding or listing it may have been missed in protocol selection.",
+    "appropriate_response": "A clinician should confirm whether the beta-blocker should be held for the test. HETU does not choose the protocol."
+  },
+  {
+    "id": "HETU_SYN_012",
+    "specialist_a_finding": "GI note says no prior colonoscopy.",
+    "specialist_b_finding": "Pathology from three years earlier in the same system reports colon polyps from colonoscopy.",
+    "patient_context": "Pathology is linked to Adult A and searchable by procedure name.",
+    "contradiction": "No prior colonoscopy versus in-system pathology from a prior colonoscopy.",
+    "root_cause": "doctor_gap",
+    "reasoning": "Prior pathology appears reasonably accessible. The GI intake may not have queried existing procedures.",
+    "appropriate_response": "Reconcile procedure history with pathology. Polyp details and surveillance interval require clinician review."
+  },
+  {
+    "id": "HETU_SYN_013",
+    "specialist_a_finding": "Hematology reports iron deficiency with no GI blood-loss workup mentioned.",
+    "specialist_b_finding": "A recent GI note in the same chart already started a workup for occult blood loss.",
+    "patient_context": "The GI note predates hematology by one week and is in the problem list comments.",
+    "contradiction": "No GI workup versus an already-started GI evaluation in the shared chart.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The GI evaluation appears to have been underway and documented. Hematology may not have seen that thread, which could duplicate or skip coordination.",
+    "appropriate_response": "Coordinate with the existing GI plan rather than assuming none exists. Next steps remain a clinical decision."
+  },
+  {
+    "id": "HETU_SYN_014",
+    "specialist_a_finding": "ED note lists blood glucose as not checked.",
+    "specialist_b_finding": "Point-of-care glucose from triage is filed in the same encounter vitals.",
+    "patient_context": "Triage glucose predates the ED physician note by 40 minutes.",
+    "contradiction": "Glucose not checked versus a triage point-of-care glucose already in the encounter.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The glucose value appears already captured. The later note may have missed an available vital.",
+    "appropriate_response": "Pull the triage glucose into medical decision-making. Interpretation of a single reading still requires clinician context."
+  },
+  {
+    "id": "HETU_SYN_015",
+    "specialist_a_finding": "Rheumatology documents no steroid exposure.",
+    "specialist_b_finding": "Ophthalmology note from last month in the same record describes chronic topical steroid use for uveitis.",
+    "patient_context": "The ophthalmology med list is visible on the shared medications tab.",
+    "contradiction": "No steroid exposure versus documented chronic topical steroid in ophthalmology.",
+    "root_cause": "doctor_gap",
+    "reasoning": "Topical steroid use appears already documented and accessible. Intake may have considered only oral steroids.",
+    "appropriate_response": "Clarify all steroid routes with Adult A and the chart. Infection or bone-risk counseling is a clinician judgment."
+  },
+  {
+    "id": "HETU_SYN_016",
+    "specialist_a_finding": "Oncology staging note omits a liver lesion mentioned on last week's CT.",
+    "specialist_b_finding": "Radiology CT report in the same chart describes an indeterminate liver lesion needing follow-up.",
+    "patient_context": "The CT report was finalized before the staging note was signed.",
+    "contradiction": "Staging without a liver lesion versus a finalized CT describing an indeterminate liver lesion.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The radiology text appears available before sign-off. Omitting it may indicate incomplete report review, not that the lesion is proven metastatic.",
+    "appropriate_response": "The staging note may need reconciliation with the CT. HETU does not classify the lesion. A clinician should decide follow-up imaging."
+  },
+  {
+    "id": "HETU_SYN_017",
+    "specialist_a_finding": "OB intake records blood type as unknown.",
+    "specialist_b_finding": "Blood bank history in the same enterprise record lists a prior type-and-screen result.",
+    "patient_context": "The blood bank result is from a previous pregnancy in this system.",
+    "contradiction": "Unknown blood type versus a prior in-system type-and-screen.",
+    "root_cause": "doctor_gap",
+    "reasoning": "A prior type-and-screen appears reasonably accessible. Recording unknown may reflect missed lookup rather than a true absence of data.",
+    "appropriate_response": "Retrieve the blood-bank history and confirm whether a new type-and-screen is still required. Transfusion decisions remain with the clinical team."
+  },
+  {
+    "id": "HETU_SYN_018",
+    "specialist_a_finding": "Sleep clinic documents no opioid use, which can affect apnea scoring.",
+    "specialist_b_finding": "Pain clinic med list in the same chart includes a nightly opioid.",
+    "patient_context": "Both clinics share the enterprise medication list.",
+    "contradiction": "No opioid use in sleep intake versus an active opioid on the shared med list.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The opioid appears already listed. Sleep intake may not have reconciled shared meds, which could affect interpretation of sleep data.",
+    "appropriate_response": "Reconcile opioids before interpreting sleep results. HETU does not diagnose sleep apnea severity."
+  },
+  {
+    "id": "HETU_SYN_019",
+    "specialist_a_finding": "Urology notes no hematuria.",
+    "specialist_b_finding": "Urinalysis from this morning in the same encounter is reported as large blood.",
+    "patient_context": "The lab result posted before the urology addendum.",
+    "contradiction": "No hematuria versus a same-day urinalysis reporting large blood.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The lab result appears to have been available. The note may not have incorporated it.",
+    "appropriate_response": "Reconcile the note with today's urinalysis. Dipstick blood is not a diagnosis; clinician review of microscopy and context is needed."
+  },
+  {
+    "id": "HETU_SYN_020",
+    "specialist_a_finding": "Endocrine note says TSH is normal without citing a value.",
+    "specialist_b_finding": "Lab tab shows TSH above the laboratory reference range from yesterday.",
+    "patient_context": "Yesterday's TSH is in the same chart used for the endocrine visit.",
+    "contradiction": "Narrative 'normal TSH' versus a laboratory TSH above the posted reference range.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The numeric TSH appears accessible. Calling it normal may reflect missed lab review or a copied phrase.",
+    "appropriate_response": "A clinician should interpret the numeric TSH with symptoms and assay context. HETU does not diagnose thyroid disease."
+  },
+  {
+    "id": "HETU_SYN_021",
+    "specialist_a_finding": "Wound clinic documents no diabetes.",
+    "specialist_b_finding": "Problem list includes type 2 diabetes with last A1c in the same record.",
+    "patient_context": "The problem list item is active and not marked resolved.",
+    "contradiction": "No diabetes in the wound note versus an active diabetes problem and A1c in-chart.",
+    "root_cause": "doctor_gap",
+    "reasoning": "Diabetes appears already on the problem list. The wound note may have used a blank template.",
+    "appropriate_response": "Reconcile diabetes status for wound-risk counseling. Treatment targets remain a clinician decision."
+  },
+  {
+    "id": "HETU_SYN_022",
+    "specialist_a_finding": "ENT documents no anticoagulant use before biopsy.",
+    "specialist_b_finding": "Cardiology list in the same chart includes warfarin with a recent INR.",
+    "patient_context": "Warfarin is on the active med list at the time of the ENT note.",
+    "contradiction": "No anticoagulant versus active warfarin and INR in the shared chart.",
+    "root_cause": "doctor_gap",
+    "reasoning": "Anticoagulation appears documented and reasonably accessible. This may be a peri-procedure history miss.",
+    "appropriate_response": "Hold/biopsy decisions require clinician review of INR and indication. HETU does not recommend stopping warfarin."
+  },
+  {
+    "id": "HETU_SYN_023",
+    "specialist_a_finding": "Sports medicine records a first ankle sprain.",
+    "specialist_b_finding": "Physical therapy notes from last season in the same system describe recurrent ankle sprains.",
+    "patient_context": "PT notes are linked to Adult A and predate today's visit.",
+    "contradiction": "First sprain versus prior PT documentation of recurrent sprains.",
+    "root_cause": "doctor_gap",
+    "reasoning": "Recurrent-sprain history appears already in PT notes. Intake may not have searched allied-health documentation.",
+    "appropriate_response": "Reconcile injury history with PT notes. Imaging or bracing choices remain with the clinician."
+  },
+  {
+    "id": "HETU_SYN_024",
+    "specialist_a_finding": "Hospitalist lists QTc as not prolonged.",
+    "specialist_b_finding": "ECG from this morning, in the same encounter, reports QTc above the lab's flagged threshold.",
+    "patient_context": "The ECG was signed before the progress note.",
+    "contradiction": "QTc not prolonged versus a same-day ECG flagging a prolonged QTc.",
+    "root_cause": "doctor_gap",
+    "reasoning": "The ECG report appears available. The narrative may not have used the measured interval.",
+    "appropriate_response": "Review the ECG interval and medications that may affect QTc. HETU does not diagnose arrhythmia risk."
+  },
+  {
+    "id": "HETU_SYN_025",
+    "specialist_a_finding": "Allergy clinic documents no epinephrine auto-injector.",
+    "specialist_b_finding": "Pharmacy fill history shows an auto-injector dispensed last month, still active on the med list.",
+    "patient_context": "Fill history and med list are in the enterprise record used by allergy clinic.",
+    "contradiction": "No auto-injector versus a recent in-system dispense still listed as active.",
+    "root_cause": "doctor_gap",
+    "reasoning": "Dispense data appear accessible. The clinic note may have missed device history, which could look like Adult A was never prescribed one.",
+    "appropriate_response": "Confirm whether Adult A still has a usable device. Prescribing or training decisions stay with the clinician."
+  },
+  {
+    "id": "HETU_SYN_026",
+    "specialist_a_finding": "Cardiology records no herbal or over-the-counter cardiac products.",
+    "specialist_b_finding": "Adult A later tells pharmacy about daily high-dose licorice tea used for weeks, not on any med list.",
+    "patient_context": "Intake asked only about prescriptions. Adult A did not consider tea a medicine.",
+    "contradiction": "No OTC cardiac products versus later report of daily high-dose licorice tea.",
+    "root_cause": "patient_gap",
+    "reasoning": "Licorice was not in the chart because it was not offered during intake and Adult A did not volunteer it. This looks more like incomplete disclosure of nonprescription products than a missed in-chart drug.",
+    "appropriate_response": "A clinician should review blood pressure and potassium in light of possible licorice exposure. HETU does not confirm a causal link. Ask about teas and supplements without blame."
+  },
+  {
+    "id": "HETU_SYN_027",
+    "specialist_a_finding": "Allergy list is blank for foods.",
+    "specialist_b_finding": "After a reaction in clinic, Adult A recalls shellfish swelling years ago that was never mentioned because 'it was just a restaurant thing.'",
+    "patient_context": "No prior food-allergy documentation exists in this fictional chart.",
+    "contradiction": "Blank food-allergy list versus a later recollection of shellfish swelling.",
+    "root_cause": "patient_gap",
+    "reasoning": "The information appears not to have been in the record because Adult A did not treat it as medically relevant. This is not a documented compassionate withhold.",
+    "appropriate_response": "Update allergy history after clinician assessment. Do not assume future risk without review. Encourage reporting of food reactions."
+  },
+  {
+    "id": "HETU_SYN_028",
+    "specialist_a_finding": "Endocrinology notes Adult A denies missed insulin doses.",
+    "specialist_b_finding": "Adult A later tells a nurse that doses were skipped on travel days and was embarrassed to say so at the visit.",
+    "patient_context": "Pump download was not available that day; the denial came from Adult A.",
+    "contradiction": "Denied missed insulin versus later admission of skipped travel doses.",
+    "root_cause": "patient_gap",
+    "reasoning": "The contradiction tracks to Adult A not disclosing missed doses when asked, not to a specialist ignoring pump data that were never in-chart.",
+    "appropriate_response": "A clinician can explore barriers to dosing without blame. HETU does not quantify missed insulin or change therapy."
+  },
+  {
+    "id": "HETU_SYN_029",
+    "specialist_a_finding": "Pre-op form: no prior anesthesia problems.",
+    "specialist_b_finding": "Adult A later mentions a family story of high fever after anesthesia in a relative, forgotten during the rushed form.",
+    "patient_context": "No family anesthesia history is stored elsewhere in this fictional record.",
+    "contradiction": "No anesthesia problems versus later recollection of a relative's fever after anesthesia.",
+    "root_cause": "patient_gap",
+    "reasoning": "The family detail appears unavailable because it was forgotten at intake, not because a prior note was unread.",
+    "appropriate_response": "Anesthesia should review possible malignant-hyperthermia family history. This may be relevant but is not a diagnosis. Clinician judgment applies."
+  },
+  {
+    "id": "HETU_SYN_030",
+    "specialist_a_finding": "Neurology: headaches are new this month.",
+    "specialist_b_finding": "Adult A later remembers similar headaches during exam season last year, not offered because the question was heard as 'this month only.'",
+    "patient_context": "No prior headache diagnoses exist in the chart.",
+    "contradiction": "New-this-month headaches versus later recall of similar headaches last year.",
+    "root_cause": "patient_gap",
+    "reasoning": "The time-course mismatch may come from how the question was understood, not from a missed prior neurology note.",
+    "appropriate_response": "Clarify headache chronology. Imaging or migraine labeling requires clinician review, not an automated conclusion."
+  },
+  {
+    "id": "HETU_SYN_031",
+    "specialist_a_finding": "Occupational health documents no solvent exposure.",
+    "specialist_b_finding": "Adult A later describes weekend furniture stripping with solvents, omitted because the form asked about 'work' only.",
+    "patient_context": "Hobby exposures were not previously recorded.",
+    "contradiction": "No solvent exposure versus later hobby solvent use not counted as work.",
+    "root_cause": "patient_gap",
+    "reasoning": "Adult A appears to have interpreted the question narrowly. The chart did not already contain the hobby exposure.",
+    "appropriate_response": "Revisit exposure history including hobbies. Attribution of symptoms to solvents requires clinician assessment."
+  },
+  {
+    "id": "HETU_SYN_032",
+    "specialist_a_finding": "GI: no NSAID use.",
+    "specialist_b_finding": "Adult A later reports daily leftover naproxen from a partner's bottle, not listed because it was not a 'real prescription.'",
+    "patient_context": "No NSAID appears on pharmacy fills.",
+    "contradiction": "No NSAID versus later report of unlabeled naproxen use.",
+    "root_cause": "patient_gap",
+    "reasoning": "The NSAID was not in fill history and was not volunteered. This looks like non-disclosure of someone else's medication, not a missed order.",
+    "appropriate_response": "Discuss unlabeled NSAID use and bleeding or kidney risk in cautious terms. Stopping or continuing is a clinician decision."
+  },
+  {
+    "id": "HETU_SYN_033",
+    "specialist_a_finding": "Psychiatry: no firearm access.",
+    "specialist_b_finding": "A later safety check with a cohabitant indicates a hunting rifle at home that Adult A did not mention, citing privacy.",
+    "patient_context": "No prior safety documentation contradicts this beyond the intake checkbox.",
+    "contradiction": "Denied firearm access versus later household report of a rifle at home.",
+    "root_cause": "patient_gap",
+    "reasoning": "The gap appears to be information Adult A did not provide when asked, not a clinician ignoring an in-chart safety note.",
+    "appropriate_response": "A clinician should redo a nonjudgmental safety assessment. HETU does not determine risk level or disposition."
+  },
+  {
+    "id": "HETU_SYN_034",
+    "specialist_a_finding": "OB: no prior pregnancies.",
+    "specialist_b_finding": "Adult A later discloses a pregnancy loss years ago, not mentioned because the form said 'children' and was read as living children.",
+    "patient_context": "No obstetric history is in this fictional record.",
+    "contradiction": "No prior pregnancies versus later disclosure of a pregnancy loss after a wording mix-up.",
+    "root_cause": "patient_gap",
+    "reasoning": "Misread form language likely kept the history out of the chart. There is no prior OB note that was ignored.",
+    "appropriate_response": "Gently re-collect obstetric history. Implications for care require clinician discussion, not an automated obstetric diagnosis."
+  },
+  {
+    "id": "HETU_SYN_035",
+    "specialist_a_finding": "Cardiology: no cocaine or stimulant use.",
+    "specialist_b_finding": "Adult A later tells a social worker about weekend stimulant use, omitted from the doctor visit from fear of judgment.",
+    "patient_context": "Urine toxicology was not obtained at the cardiology visit.",
+    "contradiction": "Denied stimulants versus later disclosure of weekend stimulant use.",
+    "root_cause": "patient_gap",
+    "reasoning": "The information was not in the medical note because Adult A did not disclose it when asked. This is not documented intentional clinical non-disclosure to Adult A.",
+    "appropriate_response": "A clinician can re-ask about stimulants in a private, nonpunitive way. Chest-pain cause remains a clinical determination."
+  },
+  {
+    "id": "HETU_SYN_036",
+    "specialist_a_finding": "Dermatology: no new meds.",
+    "specialist_b_finding": "Adult A later remembers a new acne cream started by a friend, not listed as a medication.",
+    "patient_context": "No dermatologic prescriptions were filled this month in this fictional pharmacy view.",
+    "contradiction": "No new meds versus later recall of a borrowed acne cream.",
+    "root_cause": "patient_gap",
+    "reasoning": "Borrowed topical therapy was not in the record because it was not treated as a 'med.' That is a patient-information gap.",
+    "appropriate_response": "Review all topicals including borrowed products. Rash attribution requires clinician exam."
+  },
+  {
+    "id": "HETU_SYN_037",
+    "specialist_a_finding": "Nephrology: fluid intake described as high.",
+    "specialist_b_finding": "Adult A later admits drinking far less than stated to 'look compliant' with a prior lecture about dehydration.",
+    "patient_context": "No I/O measurements exist for this outpatient visit.",
+    "contradiction": "Reported high intake versus later admission of overstated fluids.",
+    "root_cause": "patient_gap",
+    "reasoning": "The contradiction comes from Adult A’s stated history, not from ignored flowsheets.",
+    "appropriate_response": "Revisit fluid history without blame. Volume assessment remains clinical."
+  },
+  {
+    "id": "HETU_SYN_038",
+    "specialist_a_finding": "Infectious disease: no travel.",
+    "specialist_b_finding": "Adult A later recalls a two-day trip across a border that was not mentioned because it 'did not feel like travel.'",
+    "patient_context": "No passport or travel note exists in-chart.",
+    "contradiction": "No travel versus later recall of a short cross-border trip.",
+    "root_cause": "patient_gap",
+    "reasoning": "Travel was unavailable because it was not disclosed, not because a travel clinic note was unread.",
+    "appropriate_response": "Update travel history. Fever workup decisions stay with the clinician."
+  },
+  {
+    "id": "HETU_SYN_039",
+    "specialist_a_finding": "Pulmonary: inhaler used daily as prescribed.",
+    "specialist_b_finding": "Adult A later says the inhaler ran out two weeks ago and was too costly to refill, not mentioned in clinic.",
+    "patient_context": "Refill data were not pulled at that visit in this scenario.",
+    "contradiction": "Daily prescribed use versus later report of a two-week gap from cost.",
+    "root_cause": "patient_gap",
+    "reasoning": "Adherence information was not provided at the visit. Cost-related nonuse is a patient-context gap unless fill data were ignored (they were not available here).",
+    "appropriate_response": "Explore cost barriers. Stepping up therapy without that context could mislead. Clinician-directed support is appropriate."
+  },
+  {
+    "id": "HETU_SYN_040",
+    "specialist_a_finding": "Rheumatology: no eye symptoms.",
+    "specialist_b_finding": "Adult A later describes weeks of red eye, omitted because the visit felt 'about joints only.'",
+    "patient_context": "No ophthalmology note exists yet.",
+    "contradiction": "No eye symptoms versus later report of prolonged red eye not offered at the joint visit.",
+    "root_cause": "patient_gap",
+    "reasoning": "Adult A filtered history to the perceived agenda. The eye symptom was not sitting unread in another specialty note.",
+    "appropriate_response": "Ask again about extra-articular symptoms. Eye involvement, if any, needs clinician exam—not an automated systemic diagnosis."
+  },
+  {
+    "id": "HETU_SYN_041",
+    "specialist_a_finding": "Oncology: no residual pills at home.",
+    "specialist_b_finding": "A home nurse later counts leftover oral chemotherapy doses Adult A did not report, due to shame about missed days.",
+    "patient_context": "No smart-cap or fill-gap data were in the oncology note.",
+    "contradiction": "Reported taking all doses versus leftover counted pills at home.",
+    "root_cause": "patient_gap",
+    "reasoning": "The leftover pills were not documented because Adult A did not disclose missed doses. This is not a missed in-basket alert.",
+    "appropriate_response": "Address adherence support compassionately. Dose changes are a clinician decision."
+  },
+  {
+    "id": "HETU_SYN_042",
+    "specialist_a_finding": "ENT: no CPAP use.",
+    "specialist_b_finding": "Adult A later mentions an old CPAP in the closet, unused, forgotten on the form.",
+    "patient_context": "Sleep clinic is not in this health system; no prior CPAP note is on file.",
+    "contradiction": "No CPAP versus later recall of unused equipment at home.",
+    "root_cause": "patient_gap",
+    "reasoning": "Equipment history was forgotten at intake and was not available in-network.",
+    "appropriate_response": "Clarify prior sleep therapy. Current apnea management remains with the clinician."
+  },
+  {
+    "id": "HETU_SYN_043",
+    "specialist_a_finding": "Family medicine: alcohol as rare sips.",
+    "specialist_b_finding": "A later liver-clinic visit, Adult A estimates daily drinks, saying the first form felt like a test.",
+    "patient_context": "No prior alcohol biomarkers were resulted before the first visit.",
+    "contradiction": "Rare sips versus later estimate of daily drinks.",
+    "root_cause": "patient_gap",
+    "reasoning": "The first report appears minimized by Adult A. There was no ignored lab proving otherwise at that time.",
+    "appropriate_response": "Re-collect alcohol history nonjudgmentally. Liver findings need clinician interpretation."
+  },
+  {
+    "id": "HETU_SYN_044",
+    "specialist_a_finding": "Orthopedics: injury from a simple fall.",
+    "specialist_b_finding": "Adult A later discloses a physical altercation, omitted from fear of police involvement.",
+    "patient_context": "No prior forensic note exists.",
+    "contradiction": "Simple fall versus later disclosure of an altercation.",
+    "root_cause": "patient_gap",
+    "reasoning": "Mechanism was incomplete because Adult A withheld it, not because imaging of assault was unread.",
+    "appropriate_response": "Offer private, safe follow-up. Fracture care and safety planning are clinician-led. HETU does not notify authorities."
+  },
+  {
+    "id": "HETU_SYN_045",
+    "specialist_a_finding": "Endocrine: menstrual periods described as regular.",
+    "specialist_b_finding": "Adult A later says periods stopped months ago, misunderstood 'regular' as 'when they happen they are the same.'",
+    "patient_context": "No pregnancy test is in this visit’s labs.",
+    "contradiction": "Regular menses versus later report of months without periods after a wording mix-up.",
+    "root_cause": "patient_gap",
+    "reasoning": "The mismatch likely comes from misunderstood wording, not from a missed gynecology result.",
+    "appropriate_response": "Clarify amenorrhea and consider clinician-directed testing. HETU does not diagnose pregnancy or endocrine disease."
+  },
+  {
+    "id": "HETU_SYN_046",
+    "specialist_a_finding": "Cardiology: no palpitations with energy drinks.",
+    "specialist_b_finding": "Adult A later lists multiple energy drinks before work, not counted as 'caffeine pills' on the form.",
+    "patient_context": "The form asked about caffeine pills only.",
+    "contradiction": "No energy-drink palpitations flagged versus later report of multiple energy drinks.",
+    "root_cause": "patient_gap",
+    "reasoning": "The form was incomplete and Adult A did not volunteer drinks. This is a history gap, not a missed ECG already showing a diagnosis.",
+    "appropriate_response": "Ask specifically about energy drinks. Palpitation cause requires clinician review."
+  },
+  {
+    "id": "HETU_SYN_047",
+    "specialist_a_finding": "Nephrology: no contrast allergy.",
+    "specialist_b_finding": "Before a later CT, Adult A recalls hives after a prior scan at another city, never entered here.",
+    "patient_context": "Outside imaging reports are not in this fictional chart.",
+    "contradiction": "No contrast allergy versus later recall of hives after an outside scan.",
+    "root_cause": "patient_gap",
+    "reasoning": "Outside reaction history was not available in-system and was not remembered at the first visit.",
+    "appropriate_response": "Update allergy history before contrast. Premedication is a clinician choice."
+  },
+  {
+    "id": "HETU_SYN_048",
+    "specialist_a_finding": "Psychiatry: sleep is fine.",
+    "specialist_b_finding": "A partner later describes loud nightly pauses in breathing; Adult A did not think snoring counted.",
+    "patient_context": "No sleep study is on file.",
+    "contradiction": "Sleep reported fine versus partner description of witnessed pauses.",
+    "root_cause": "patient_gap",
+    "reasoning": "Adult A did not consider partner-observed pauses as sleep problems. There is no unread sleep-study contradiction.",
+    "appropriate_response": "A clinician may consider sleep evaluation. HETU does not diagnose sleep apnea."
+  },
+  {
+    "id": "HETU_SYN_049",
+    "specialist_a_finding": "Wound clinic: diet described as balanced.",
+    "specialist_b_finding": "Adult A later reports days with almost no protein because of dental pain, not mentioned as 'diet.'",
+    "patient_context": "No nutrition note predates this.",
+    "contradiction": "Balanced diet versus later low protein from unmentioned dental pain.",
+    "root_cause": "patient_gap",
+    "reasoning": "Nutrition detail was not offered. Dental pain was not sitting in an unread dental note in this scenario.",
+    "appropriate_response": "Reassess nutrition and dental access. Wound healing plans stay with the care team."
+  },
+  {
+    "id": "HETU_SYN_050",
+    "specialist_a_finding": "Neurology: no head injury.",
+    "specialist_b_finding": "Adult A later recalls a concussion in youth sports, remembered only after a TV show, never documented.",
+    "patient_context": "No prior concussion diagnosis is in the chart.",
+    "contradiction": "No head injury versus later recalled youth concussion.",
+    "root_cause": "patient_gap",
+    "reasoning": "Remote history was forgotten at intake, not omitted from a missed ED scan in this record.",
+    "appropriate_response": "Add possible remote concussion to history after clinician confirmation. Current symptoms still need clinical evaluation."
+  },
+  {
+    "id": "HETU_SYN_051",
+    "specialist_a_finding": "Visit 1 cardiology: blood pressure 148/92 in clinic.",
+    "specialist_b_finding": "Visit 2, two weeks later: home log averages 124/78 using a validated cuff.",
+    "patient_context": "Different days, different settings. No med change between visits. Adult A reports white-coat anxiety at Visit 1.",
+    "contradiction": "Higher clinic reading versus lower later home averages.",
+    "root_cause": "no_fault",
+    "reasoning": "The numbers may both be accurate in their contexts. Clinic versus home measurement and timing can differ without anyone missing a chart fact.",
+    "appropriate_response": "A clinician should interpret both settings together. HETU does not declare hypertension controlled or uncontrolled from one pair of readings."
+  },
+  {
+    "id": "HETU_SYN_052",
+    "specialist_a_finding": "Radiology day 0: chest film possibly consistent with early infiltrate.",
+    "specialist_b_finding": "Radiology day 2: film improved after fluids, now read as likely atelectasis.",
+    "patient_context": "Serial films exist; antibiotics were not yet started at day 0.",
+    "contradiction": "Possible infiltrate versus later likely atelectasis on a later film.",
+    "root_cause": "no_fault",
+    "reasoning": "This may represent diagnostic evolution as new images accrued, not a missed day-0 report. Early and later reads can reasonably differ.",
+    "appropriate_response": "Treat the later film as additional evidence, not proof the first reader erred. Infection versus atelectasis remains a clinical call."
+  },
+  {
+    "id": "HETU_SYN_053",
+    "specialist_a_finding": "ED: troponin within reference range at hour 0.",
+    "specialist_b_finding": "Cardiology: troponin above the assay’s 99th percentile at hour 6.",
+    "patient_context": "Same Adult A, protocol serial troponins, no lost hour-0 result.",
+    "contradiction": "Initial normal troponin versus later rise on serial testing.",
+    "root_cause": "no_fault",
+    "reasoning": "Serial biomarkers are expected to change. A later rise does not by itself mean the first value was ignored.",
+    "appropriate_response": "A clinician should use the serial pattern. HETU does not diagnose myocardial infarction."
+  },
+  {
+    "id": "HETU_SYN_054",
+    "specialist_a_finding": "Endocrine 2023 note: A1c 6.4%.",
+    "specialist_b_finding": "Endocrine 2025 note: A1c 7.6% on the same assay type.",
+    "patient_context": " intervening weight gain is documented; both labs are in-chart and cited.",
+    "contradiction": "Lower older A1c versus higher newer A1c.",
+    "root_cause": "no_fault",
+    "reasoning": "Glycemia can evolve. Both values may be valid at their times. This is not a missed 2023 lab.",
+    "appropriate_response": "Trend interpretation and therapy adjustments belong to the clinician. HETU does not diagnose diabetes stage."
+  },
+  {
+    "id": "HETU_SYN_055",
+    "specialist_a_finding": "Neurology: MRI brain without contrast reported as unremarkable for acute stroke.",
+    "specialist_b_finding": "Later MRI with contrast describes a small enhancing lesion requiring differential consideration.",
+    "patient_context": "Different protocols and dates; the first study did not use contrast.",
+    "contradiction": "Unremarkable noncontrast study versus a later contrast-enhanced finding.",
+    "root_cause": "no_fault",
+    "reasoning": "Different sequences can reveal different information. The first read may still be reasonable for its protocol.",
+    "appropriate_response": "A clinician should integrate both studies. HETU does not identify the lesion type."
+  },
+  {
+    "id": "HETU_SYN_056",
+    "specialist_a_finding": "Clinic: potassium 3.3 on a hemolyzed sample flagged by the lab.",
+    "specialist_b_finding": "Repeat potassium 4.1 on a nonhemolyzed draw the same afternoon.",
+    "patient_context": "Both results and the hemolysis flag are documented.",
+    "contradiction": "Low potassium versus later normal potassium the same day.",
+    "root_cause": "no_fault",
+    "reasoning": "Hemolysis can artifactually affect potassium. The repeat, with the flag, reasonably explains the apparent contradiction.",
+    "appropriate_response": "Prefer the nonhemolyzed value unless a clinician judges otherwise. Do not treat the first number in isolation."
+  },
+  {
+    "id": "HETU_SYN_057",
+    "specialist_a_finding": "Orthopedics: fracture described as nondisplaced on initial films.",
+    "specialist_b_finding": "Day 10 films: interval displacement after documented weight-bearing against advice.",
+    "patient_context": "Both image sets are in the chart with dates.",
+    "contradiction": "Nondisplaced then later displaced fracture.",
+    "root_cause": "no_fault",
+    "reasoning": "Fracture position can change with time and loading. This may be evolution, not a missed displacement on day 0.",
+    "appropriate_response": "Management of interval change is a clinician decision. HETU does not assign fault for displacement."
+  },
+  {
+    "id": "HETU_SYN_058",
+    "specialist_a_finding": "Pulmonary: peak flow 320 in clinic.",
+    "specialist_b_finding": "Home peak flow 420 the next morning before work.",
+    "patient_context": "Different times of day; Adult A has known morning-afternoon variation in the note.",
+    "contradiction": "Lower clinic peak flow versus higher next-morning home value.",
+    "root_cause": "no_fault",
+    "reasoning": "Airflow can vary by time and setting. Both measurements may be valid.",
+    "appropriate_response": "Interpret peak flows as a pattern. HETU does not grade asthma control from two numbers."
+  },
+  {
+    "id": "HETU_SYN_059",
+    "specialist_a_finding": "Pathology: biopsy 'atypical cells, insufficient for definitive classification.'",
+    "specialist_b_finding": "Later excision: benign lesion after complete sampling.",
+    "patient_context": "The first report explicitly stated limited tissue.",
+    "contradiction": "Atypical on small biopsy versus benign on later excision.",
+    "root_cause": "no_fault",
+    "reasoning": "Limited sampling can yield uncertainty that later tissue resolves. This is expected diagnostic evolution, not a missed final diagnosis on day one.",
+    "appropriate_response": "Sampling limits should be explained. Final tissue interpretation stays with pathology and the treating clinician."
+  },
+  {
+    "id": "HETU_SYN_060",
+    "specialist_a_finding": "Infectious disease day 1: cultures pending, empiric language only.",
+    "specialist_b_finding": "Day 3: cultures identify an organism and therapy is narrowed.",
+    "patient_context": "Pending status is documented on day 1.",
+    "contradiction": "No organism named on day 1 versus an organism named on day 3.",
+    "root_cause": "no_fault",
+    "reasoning": "Culture turnaround reasonably explains the difference. Day 1 did not ignore a posted final culture.",
+    "appropriate_response": "Narrowing therapy is a clinical antimicrobial decision. HETU does not choose agents."
+  },
+  {
+    "id": "HETU_SYN_061",
+    "specialist_a_finding": "OB: fetal heart rate reactive on morning tracing.",
+    "specialist_b_finding": "Afternoon tracing with contractions shows decelerations requiring review.",
+    "patient_context": "Two tracings, same day, different labor stage.",
+    "contradiction": "Reactive tracing versus later decelerations.",
+    "root_cause": "no_fault",
+    "reasoning": "Fetal monitoring can change as labor evolves. The morning tracing may still have been appropriately read.",
+    "appropriate_response": "Continuous clinical review of tracings is required. HETU does not determine delivery urgency."
+  },
+  {
+    "id": "HETU_SYN_062",
+    "specialist_a_finding": "Rheumatology: ANA negative last year.",
+    "specialist_b_finding": "ANA positive this year on a different assay method noted in the lab comment.",
+    "patient_context": "Both labs are cited with methods.",
+    "contradiction": "Prior negative ANA versus later positive ANA on a different method.",
+    "root_cause": "no_fault",
+    "reasoning": "Assay differences and biologic change can both occur. This is not automatically a missed prior result.",
+    "appropriate_response": "A clinician should interpret serology with symptoms. HETU does not diagnose autoimmune disease."
+  },
+  {
+    "id": "HETU_SYN_063",
+    "specialist_a_finding": "Urology: PSA 4.1 last year.",
+    "specialist_b_finding": "PSA 3.8 this year after documented prostatitis treatment in between.",
+    "patient_context": "Both PSAs and the prostatitis episode are in-chart.",
+    "contradiction": "Slightly higher then slightly lower PSA.",
+    "root_cause": "no_fault",
+    "reasoning": "PSA can vary with inflammation and time. The newer value does not prove the older one was wrong.",
+    "appropriate_response": "PSA trends need clinician context. HETU does not diagnose prostate cancer."
+  },
+  {
+    "id": "HETU_SYN_064",
+    "specialist_a_finding": "ED: oxygen saturation 94% on room air at arrival.",
+    "specialist_b_finding": "Floor: saturation 98% after bronchodilators two hours later.",
+    "patient_context": "Treatment and timing are documented.",
+    "contradiction": "Lower arrival saturation versus higher post-treatment saturation.",
+    "root_cause": "no_fault",
+    "reasoning": "Response over time after therapy is expected. This is not a missed arrival saturation.",
+    "appropriate_response": "Use the trajectory, not a single spo2, for decisions. HETU does not diagnose the cause of hypoxia."
+  },
+  {
+    "id": "HETU_SYN_065",
+    "specialist_a_finding": "Dermatology: lesion described as stable last visit.",
+    "specialist_b_finding": "This visit: lesion larger after documented growth over eight weeks in photos.",
+    "patient_context": "Serial photos are dated.",
+    "contradiction": "Previously stable versus now larger lesion.",
+    "root_cause": "no_fault",
+    "reasoning": "Skin lesions can change. The earlier 'stable' may have been accurate then.",
+    "appropriate_response": "A clinician should decide on biopsy. HETU does not call the lesion malignant."
+  },
+  {
+    "id": "HETU_SYN_066",
+    "specialist_a_finding": "Nephrology: eGFR 62 using CKD-EPI creatinine.",
+    "specialist_b_finding": "A research note lists eGFR 54 using a cystatin-based equation the same week.",
+    "patient_context": "Both equations and labs are documented as different methods.",
+    "contradiction": "Two different eGFR numbers in the same week.",
+    "root_cause": "no_fault",
+    "reasoning": "Different equations can yield different eGFR estimates without either lab being unread.",
+    "appropriate_response": "Report which equation was used. Staging and drug dosing remain clinician tasks."
+  },
+  {
+    "id": "HETU_SYN_067",
+    "specialist_a_finding": "Cardiology: ejection fraction 55% on echo last year.",
+    "specialist_b_finding": "This year: ejection fraction 40% after an interval documented infarction.",
+    "patient_context": "Both studies are complete and cited.",
+    "contradiction": "Preserved then reduced ejection fraction.",
+    "root_cause": "no_fault",
+    "reasoning": "Ventricular function can decline after an interval event. This is evolution, not a missed last-year echo.",
+    "appropriate_response": "A clinician should manage the current function. HETU does not diagnose heart-failure phenotype alone."
+  },
+  {
+    "id": "HETU_SYN_068",
+    "specialist_a_finding": "GI: abdominal CT last month without oral contrast, limited bowel evaluation.",
+    "specialist_b_finding": "This month CT with oral contrast describes a possible thickening in a loop not seen well before.",
+    "patient_context": "Technique differences are in both reports.",
+    "contradiction": "Limited prior CT versus a later possible bowel finding on a different protocol.",
+    "root_cause": "no_fault",
+    "reasoning": "Technique limits can hide findings that a later protocol shows. The first study may still have been reported within its limits.",
+    "appropriate_response": "Compare protocols before calling the first read an error. Further GI evaluation is a clinician decision."
+  },
+  {
+    "id": "HETU_SYN_069",
+    "specialist_a_finding": "Psychiatry: PHQ-9 score 8 at intake.",
+    "specialist_b_finding": "PHQ-9 score 16 two months later during a documented bereavement.",
+    "patient_context": "Both scores are in the chart with dates.",
+    "contradiction": "Milder then higher symptom scores.",
+    "root_cause": "no_fault",
+    "reasoning": "Symptom scores can change with life events. The later score does not mean the first was ignored.",
+    "appropriate_response": "A clinician should reassess safety and support. HETU does not diagnose a specific depressive disorder from scores alone."
+  },
+  {
+    "id": "HETU_SYN_070",
+    "specialist_a_finding": "Sports medicine: concussion symptoms resolved at two weeks.",
+    "specialist_b_finding": "Six weeks: symptoms returned after documented early return to contact.",
+    "patient_context": "Return-to-play note is dated.",
+    "contradiction": "Resolved then recurrent symptoms.",
+    "root_cause": "no_fault",
+    "reasoning": "Recurrence after further exposure can occur even if the two-week exam was reasonably documented.",
+    "appropriate_response": "Further restrictions are a clinician and protocol decision. HETU does not clear athletes."
+  },
+  {
+    "id": "HETU_SYN_071",
+    "specialist_a_finding": "Hematology: platelet count 90 on a clumped smear flagged by the lab.",
+    "specialist_b_finding": "Repeat in citrate 180 the same day.",
+    "patient_context": "Clumping flag is present.",
+    "contradiction": "Low then normal platelets the same day.",
+    "root_cause": "no_fault",
+    "reasoning": "Platelet clumping can artifactually lower counts. The flagged smear reasonably explains the gap.",
+    "appropriate_response": "Use the citrate repeat unless a clinician suspects true thrombocytopenia."
+  },
+  {
+    "id": "HETU_SYN_072",
+    "specialist_a_finding": "Allergy: skin testing negative to a panel last year.",
+    "specialist_b_finding": "This year: positive to one item after a new exposure history.",
+    "patient_context": "Both tests are documented; panels differ slightly.",
+    "contradiction": "Prior negative test versus a later positive to one allergen.",
+    "root_cause": "no_fault",
+    "reasoning": "Sensitization and panel composition can change. This is not automatically a missed last-year test.",
+    "appropriate_response": "Interpret testing with history. HETU does not declare a lifelong allergy status."
+  },
+  {
+    "id": "HETU_SYN_073",
+    "specialist_a_finding": "Hospital day 1: possible community pneumonia on chest radiograph.",
+    "specialist_b_finding": "Day 4 CT: findings more consistent with pulmonary edema after documented fluids.",
+    "patient_context": "Both reports exist; clinical course is in the notes.",
+    "contradiction": "Pneumonia-leaning radiograph versus later edema-leaning CT.",
+    "root_cause": "no_fault",
+    "reasoning": "Working impressions can shift with CT and hospital course. Day 1 may have been reasonable with only a radiograph.",
+    "appropriate_response": "Update the working impression. Antibiotic or diuretic choices remain clinical."
+  },
+  {
+    "id": "HETU_SYN_074",
+    "specialist_a_finding": "Primary care: BMI 31 last year.",
+    "specialist_b_finding": "BMI 28 this year after a documented nutrition program.",
+    "patient_context": "Both heights/weights are recorded.",
+    "contradiction": "Higher then lower BMI.",
+    "root_cause": "no_fault",
+    "reasoning": "Weight can change with time and programs. Neither visit ignored the other’s already-past measurement.",
+    "appropriate_response": "Use current BMI for counseling. HETU does not diagnose obesity class as a legal status."
+  },
+  {
+    "id": "HETU_SYN_075",
+    "specialist_a_finding": "Ophthalmology: intraocular pressure 22 mm Hg afternoon clinic.",
+    "specialist_b_finding": "Morning check 16 mm Hg on another day.",
+    "patient_context": "Diurnal variation is mentioned in the note.",
+    "contradiction": "Higher afternoon versus lower morning pressures.",
+    "root_cause": "no_fault",
+    "reasoning": "Intraocular pressure can vary by time of day. Both may be valid.",
+    "appropriate_response": "A clinician should interpret the pattern. HETU does not diagnose glaucoma from two readings."
+  },
+  {
+    "id": "HETU_SYN_076",
+    "specialist_a_finding": "Oncology internal note: imaging may be consistent with progressive disease; plan to discuss after family meeting.",
+    "specialist_b_finding": "Same-day patient-facing after-visit summary lists 'results pending discussion' and does not name progression.",
+    "patient_context": "A documented compassionate staged-disclosure plan is in the oncology note with a scheduled family meeting.",
+    "contradiction": "Internal concern for progression versus a patient summary that does not state progression.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "The difference appears planned and documented as staged communication, not an accidental omission or Adult A withholding facts.",
+    "appropriate_response": "Honor the documented communication plan unless a clinician updates it. HETU does not independently disclose imaging interpretations to Adult A."
+  },
+  {
+    "id": "HETU_SYN_077",
+    "specialist_a_finding": "Psychiatry private staff note: possible cognitive testing decline; hold full scoring language until support person present.",
+    "specialist_b_finding": "Patient portal message that day: 'cognitive testing reviewed in person next visit.'",
+    "patient_context": "The chart documents a capacity-and-support reason for delaying detailed scores.",
+    "contradiction": "Staff concern about decline versus portal language deferring details.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Delay of detailed scores is explicitly tied to a documented support-person plan, not a missing test that was never done.",
+    "appropriate_response": "Do not auto-post scores to the portal. A clinician should complete the planned discussion."
+  },
+  {
+    "id": "HETU_SYN_078",
+    "specialist_a_finding": "Genetics internal: a variant may be associated with a serious adult-onset condition; disclosure pathway specified.",
+    "specialist_b_finding": "Visit summary to Adult A discusses only the originally requested carrier question.",
+    "patient_context": "Institutional secondary-findings policy and Adult A’s documented preference to defer unrelated results are on file.",
+    "contradiction": "Internal secondary-finding note versus a summary limited to the requested question.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Withholding the secondary finding follows a documented preference and policy, not a lost lab.",
+    "appropriate_response": "Follow the documented genetics disclosure pathway. HETU must not announce the variant in patient-facing text."
+  },
+  {
+    "id": "HETU_SYN_079",
+    "specialist_a_finding": "ICU family-meeting note: prognosis discussed with surrogate; Adult A not to be given numeric survival estimates tonight per team and surrogate.",
+    "specialist_b_finding": "Overnight RN note to Adult A uses comfort language without numeric prognosis.",
+    "patient_context": "The restriction is written as a time-limited, surrogate-involved communication plan.",
+    "contradiction": "Detailed prognosis in the family note versus no numbers in Adult A’s overnight communication.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "This is a documented, time-limited non-disclosure to Adult A, not a missing chart fact and not Adult A hiding data.",
+    "appropriate_response": "Keep patient-facing language aligned with the plan until a clinician revisits it."
+  },
+  {
+    "id": "HETU_SYN_080",
+    "specialist_a_finding": "Pathology: report routed to surgeon first by policy; Adult A portal locked pending surgeon call.",
+    "specialist_b_finding": "Portal shows 'pathology in process of clinician review.'",
+    "patient_context": "A standard hold-for-clinician-disclosure policy is cited in the release log.",
+    "contradiction": "Final pathology exists internally versus portal not showing the diagnosis line.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "The hold is an explicit disclosure workflow, not an unread report and not patient non-disclosure.",
+    "appropriate_response": "Do not bypass the surgeon’s disclosure. HETU does not interpret the pathology for Adult A."
+  },
+  {
+    "id": "HETU_SYN_081",
+    "specialist_a_finding": "Ethics note: Adult A requested not to be told cancer-related labels; surrogate designated for those details.",
+    "specialist_b_finding": "Oncology patient instructions avoid the word cancer and point to the surrogate.",
+    "patient_context": "Adult A’s request is documented with ethics involvement.",
+    "contradiction": "Internal cancer-related working labels versus patient instructions that avoid that language.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Language limits follow Adult A’s documented request, which is a form of intentional, agreed non-disclosure of certain terms.",
+    "appropriate_response": "Respect the documented preference. Clinical teams still need accurate internal terms. HETU should not insert avoided labels into patient-facing output."
+  },
+  {
+    "id": "HETU_SYN_082",
+    "specialist_a_finding": "Pediatrics (adolescent): sexually transmitted infection result in confidential teen module.",
+    "specialist_b_finding": "After-visit printout given in front of a parent omits the STI result per confidential-care protocol.",
+    "patient_context": "Confidential adolescent sexual-health protocol is cited.",
+    "contradiction": "Result present in the confidential module versus omitted from the parent-facing printout.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Omission from the parent printout is a documented confidentiality rule, not a lost lab.",
+    "appropriate_response": "Keep parent-facing materials aligned with adolescent confidentiality rules. Treatment remains a clinician’s role."
+  },
+  {
+    "id": "HETU_SYN_083",
+    "specialist_a_finding": "Neurology: possible motor-neuron-related working concern in a staff-only assessment.",
+    "specialist_b_finding": "Patient letter describes further testing without naming that working concern, per documented stepwise counseling.",
+    "patient_context": "A stepwise counseling checklist is in the note.",
+    "contradiction": "Staff working concern versus a patient letter that does not name it.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "The letter matches a documented counseling sequence rather than an accidental gap.",
+    "appropriate_response": "Do not name the working concern in patient materials until the clinician’s sequence is complete. HETU does not confirm that diagnosis."
+  },
+  {
+    "id": "HETU_SYN_084",
+    "specialist_a_finding": "Transplant: donor-derived risk details in a restricted tab.",
+    "specialist_b_finding": "Recipient-facing education uses approved general language only, per organ-procurement policy cited.",
+    "patient_context": "Policy restricting certain donor details is referenced.",
+    "contradiction": "Restricted donor-risk tab versus general recipient education language.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "The difference is policy-based disclosure control, not a missed infection workup.",
+    "appropriate_response": "Keep recipient-facing text within approved language. Infection management stays with the transplant team."
+  },
+  {
+    "id": "HETU_SYN_085",
+    "specialist_a_finding": "Radiology addendum: unexpected finding, 'contact ordering clinician before patient portal release.'",
+    "specialist_b_finding": "Portal still shows the original report without the addendum, with a documented delay ticket.",
+    "patient_context": "An unexpected-finding hold is logged.",
+    "contradiction": "Internal addendum versus portal original report.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "The delay is an explicit unexpected-finding protocol, not Adult A hiding imaging.",
+    "appropriate_response": "Do not surface the addendum to Adult A through HETU. The ordering clinician should disclose."
+  },
+  {
+    "id": "HETU_SYN_086",
+    "specialist_a_finding": "Geriatrics: possible driving-safety concern documented for a later DMV-related discussion with a surrogate.",
+    "specialist_b_finding": "Same-day patient summary focuses on home supports and does not mention driving.",
+    "patient_context": "Note states driving will be discussed with a designated surrogate present next visit.",
+    "contradiction": "Internal driving-safety concern versus a summary silent on driving.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Silence on driving is a documented delayed-discussion plan, not forgotten chart review.",
+    "appropriate_response": "Defer driving language until the planned visit. Fitness-to-drive is a clinician and legal determination."
+  },
+  {
+    "id": "HETU_SYN_087",
+    "specialist_a_finding": "OB: suspected fetal finding on ultrasound, documented plan to confirm at a specialty center before detailed parental counseling.",
+    "specialist_b_finding": "Today’s patient instructions say 'specialty ultrasound scheduled' without naming a suspected finding.",
+    "patient_context": "The confirmation-before-counseling plan is explicit.",
+    "contradiction": "Internal suspected fetal finding versus patient instructions that only mention a scheduled study.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Limited wording is a documented confirmation-first approach, not a missing ultrasound file.",
+    "appropriate_response": "Avoid naming the suspected finding in patient-facing HETU text. Counseling belongs to the obstetric team."
+  },
+  {
+    "id": "HETU_SYN_088",
+    "specialist_a_finding": "Infectious disease: public-health reportable result in a restricted inbox.",
+    "specialist_b_finding": "Patient message template uses health-department-approved wording that omits certain locator details.",
+    "patient_context": "Reportable-disease communication protocol is attached.",
+    "contradiction": "Full internal result versus limited approved patient wording.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Limited wording follows a public-health disclosure protocol, not a lab that was never resulted.",
+    "appropriate_response": "Use approved wording only. Treatment and public-health steps remain with clinicians and authorities."
+  },
+  {
+    "id": "HETU_SYN_089",
+    "specialist_a_finding": "Oncology: clinical-trial randomization arm in a blinded staff field.",
+    "specialist_b_finding": "Adult A’s education materials describe the trial without naming the assigned arm, per protocol.",
+    "patient_context": "Blinded-trial SOP is cited.",
+    "contradiction": "Staff field with arm versus patient materials without arm.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "This is protocol-required blinding, a form of intentional non-disclosure of assignment.",
+    "appropriate_response": "Do not reveal randomization. Eligibility and toxicity management stay with the trial clinicians."
+  },
+  {
+    "id": "HETU_SYN_090",
+    "specialist_a_finding": "Palliative care: possible short prognosis in a clinician-to-clinician note.",
+    "specialist_b_finding": "Patient-facing goals-of-care worksheet uses Adult A’s requested 'day at a time' framing.",
+    "patient_context": "Adult A’s requested framing is documented.",
+    "contradiction": "Internal short-prognosis language versus day-at-a-time patient worksheet.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "The worksheet follows Adult A’s documented communication preference, not an absent prognosis discussion among clinicians.",
+    "appropriate_response": "Match Adult A’s requested framing in patient-facing output. Prognostic disclosure timing is a clinician skill."
+  },
+  {
+    "id": "HETU_SYN_091",
+    "specialist_a_finding": "Cardiology: device interrogation shows alerts reserved for clinician review before patient app sync.",
+    "specialist_b_finding": "The consumer app still shows 'reviewing with your clinic' after a documented delay of alert push.",
+    "patient_context": "Manufacturer-clinic alert delay is logged.",
+    "contradiction": "Internal device alerts versus app without alert details.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Alert contents are intentionally gated for clinician review, not missing interrogations.",
+    "appropriate_response": "Do not dump raw alerts to Adult A. Device therapy changes require a clinician."
+  },
+  {
+    "id": "HETU_SYN_092",
+    "specialist_a_finding": "Psychiatry: suspected factitious pattern in a confidential staff formulation.",
+    "specialist_b_finding": "Patient plan lists symptom-management and frequent follow-up without that formulation label.",
+    "patient_context": "Team documents that the formulation is for staff only pending more data.",
+    "contradiction": "Staff formulation versus a patient plan without that label.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "The label is intentionally staff-only while data accrue—not a missing medication list.",
+    "appropriate_response": "Keep staff-only formulations out of patient-facing HETU text. Care planning remains clinical."
+  },
+  {
+    "id": "HETU_SYN_093",
+    "specialist_a_finding": "Surgery: margin status in the operative note; Adult A to be told after a multidisciplinary meeting tomorrow.",
+    "specialist_b_finding": "Post-op instructions discuss wound care only.",
+    "patient_context": "The meeting-first disclosure plan is dated.",
+    "contradiction": "Margin status in the operative note versus wound-care-only patient instructions.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Withholding margin language overnight is a documented sequence, not a lost pathology.",
+    "appropriate_response": "Do not state margin status to Adult A via HETU before the planned meeting."
+  },
+  {
+    "id": "HETU_SYN_094",
+    "specialist_a_finding": "Occupational medicine: workplace toxin result routed to employer health per Adult A’s signed authorization, not to the open portal.",
+    "specialist_b_finding": "Portal shows 'result handled through occupational health.'",
+    "patient_context": "A signed routing authorization is on file.",
+    "contradiction": "Full occupational result in a restricted routing versus portal placeholder text.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Routing away from the open portal is authorized and intentional, not an unread lab.",
+    "appropriate_response": "Do not copy occupational results into general patient messages. Follow the authorization."
+  },
+  {
+    "id": "HETU_SYN_095",
+    "specialist_a_finding": "Neurology: possible seizure versus syncope still uncertain; team agrees not to use the word epilepsy with Adult A until EEG.",
+    "specialist_b_finding": "After-visit summary says 'spell, further testing planned.'",
+    "patient_context": "The wording restriction pending EEG is explicit.",
+    "contradiction": "Internal differential including seizure versus patient summary saying spell.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Avoiding 'epilepsy' is a documented uncertainty-management choice, not a missing EEG that already exists.",
+    "appropriate_response": "Keep patient-facing terms aligned. HETU does not diagnose epilepsy."
+  },
+  {
+    "id": "HETU_SYN_096",
+    "specialist_a_finding": "Genetics: misattributed parentage flagged internally, not to be placed in the patient letter.",
+    "specialist_b_finding": "Patient letter discusses only the gene result Adult A consented to receive.",
+    "patient_context": "Lab and ethics SOP for incidental parentage is cited.",
+    "contradiction": "Internal parentage flag versus a letter silent on parentage.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Parentage is a documented incidental finding withheld by policy, not a clinician who forgot a lab.",
+    "appropriate_response": "Do not include parentage in HETU patient text. Genetics counseling is clinician-led."
+  },
+  {
+    "id": "HETU_SYN_097",
+    "specialist_a_finding": "ED: suspected intimate-partner injury pattern in a staff safety note.",
+    "specialist_b_finding": "Discharge instructions describe injury care without naming a suspected mechanism, pending a private interview.",
+    "patient_context": "A staged private-interview plan is written.",
+    "contradiction": "Staff suspected mechanism versus discharge text without that mechanism.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "The discharge text follows a safety-staging plan, not incomplete imaging.",
+    "appropriate_response": "Do not print the suspected mechanism on papers that may be seen by others. Safety planning is clinical."
+  },
+  {
+    "id": "HETU_SYN_098",
+    "specialist_a_finding": "Oncology: molecular panel with a finding reserved for a dedicated counseling slot.",
+    "specialist_b_finding": "Interim portal: 'molecular testing complete; counseling scheduled.'",
+    "patient_context": "Counseling-slot-first policy is in the molecular-order comments.",
+    "contradiction": "Internal molecular finding versus portal without the gene name.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Gene-level results are intentionally queued for counseling, not lost.",
+    "appropriate_response": "Do not name the gene in interim messages. Interpretation requires a qualified clinician."
+  },
+  {
+    "id": "HETU_SYN_099",
+    "specialist_a_finding": "Geriatrics: possible undiagnosed hearing loss noted for a later audiology-framed discussion so Adult A is not told 'you are deaf' today.",
+    "specialist_b_finding": "Today’s summary focuses on communication tips and an audiology referral.",
+    "patient_context": "The note documents avoiding pejorative labeling today.",
+    "contradiction": "Internal possible hearing-loss concern versus summary without a hearing-loss label.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Labeling is delayed by a documented communication plan, not because audiology results already exist and were ignored.",
+    "appropriate_response": "Keep today’s patient language to tips and referral. Hearing diagnosis awaits clinician-directed testing."
+  },
+  {
+    "id": "HETU_SYN_100",
+    "specialist_a_finding": "ICU: brain-death testing protocol in progress; family not to receive a final determination until the protocol completes.",
+    "specialist_b_finding": "Family update uses 'testing in progress' without a determination.",
+    "patient_context": "The protocol’s no-final-statement-until-complete rule is cited.",
+    "contradiction": "Internal protocol underway versus family update without a determination.",
+    "root_cause": "intentional_non_disclosure",
+    "reasoning": "Withholding a determination until the protocol finishes is required process, not a missing exam that was already final.",
+    "appropriate_response": "Do not state brain death through HETU. Determination is solely a qualified clinician’s legal and clinical act."
+  }
+]

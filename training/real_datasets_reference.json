@@ -1,0 +1,52 @@
+[
+  {
+    "dataset_name": "MIMIC-IV",
+    "source_organization": "MIT Laboratory for Computational Physiology; PhysioNet (Beth Israel Deaconess Medical Center source data)",
+    "official_url": "https://physionet.org/content/mimiciv/",
+    "data_type": "De-identified hospital and ICU electronic health record tables (diagnoses, medications, labs, events, timestamps). Credentialed access. Not open patient-level download without DUA.",
+    "usefulness_for_hetu": "Longitudinal structured events can support research on temporal relationships, medication and diagnosis codes, and whether two documented facts could reasonably have been available to a clinician. Does not by itself label HETU root-cause categories.",
+    "access_requirements": "PhysioNet credentialed user; CITI Data or Specimens Only Research (or equivalent as required by PhysioNet); signed PhysioNet Credentialed Health Data Use Agreement. Cloud/BigQuery access is requested separately after credentialing.",
+    "privacy_notes": "De-identified under HIPAA Safe Harbor processes used by the MIMIC program; re-identification is prohibited. This is restricted clinical data, not public domain text to copy into fine-tuning files.",
+    "license_or_terms": "PhysioNet Credentialed Health Data License 1.5.0 and PhysioNet Credentialed Health Data Use Agreement 1.5.0 (see the official project page)."
+  },
+  {
+    "dataset_name": "MIMIC-IV-Note: Deidentified free-text clinical notes",
+    "source_organization": "MIT Laboratory for Computational Physiology; PhysioNet",
+    "official_url": "https://physionet.org/content/mimic-iv-note/2.2/",
+    "data_type": "De-identified discharge summaries and radiology reports linkable to MIMIC-IV. Credentialed access.",
+    "usefulness_for_hetu": "Free-text specialist and radiology documentation is the closest public research analog to specialist_a / specialist_b findings. Suitable for clinical NLP, terminology, and inconsistency research after authorization. Must not be copied into HETU training.jsonl.",
+    "access_requirements": "Same PhysioNet credentialing, CITI training, and DUA as other MIMIC restricted projects; users must also have (or obtain) MIMIC-IV access as required by the project page.",
+    "privacy_notes": "Notes are de-identified; still restricted. Do not redistribute notes or post them to GitHub.",
+    "license_or_terms": "PhysioNet Credentialed Health Data License 1.5.0 and associated DUA (see official page)."
+  },
+  {
+    "dataset_name": "eICU Collaborative Research Database",
+    "source_organization": "MIT Laboratory for Computational Physiology; Philips eICU Research Institute contributors; PhysioNet",
+    "official_url": "https://physionet.org/content/eicu-crd/2.0/",
+    "data_type": "Multi-center critical-care EHR tables (diagnoses, meds, labs, time-stamped events). Credentialed access.",
+    "usefulness_for_hetu": "Multi-site ICU timelines support research on measurement variation, evolving impressions, and specialist documentation across units—relevant to no_fault versus gap distinctions at a research level.",
+    "access_requirements": "PhysioNet credentialed user; required human-subjects / HIPAA training as stated on PhysioNet; signed credentialed DUA.",
+    "privacy_notes": "De-identified multi-center ICU data; re-identification prohibited. Restricted, not a public note dump.",
+    "license_or_terms": "PhysioNet Credentialed Health Data License 1.5.0 and PhysioNet Credentialed Health Data Use Agreement 1.5.0."
+  },
+  {
+    "dataset_name": "MIMIC-IV Clinical Database Demo",
+    "source_organization": "MIT Laboratory for Computational Physiology; PhysioNet",
+    "official_url": "https://physionet.org/content/mimic-iv-demo/",
+    "data_type": "Openly available subset of 100 patients with MIMIC-IV-like tables. Excludes free-text clinical notes.",
+    "usefulness_for_hetu": "Useful to inspect schema, join keys, and event tables before requesting full MIMIC-IV. Not a substitute for notes-based contradiction labeling. Demo patients are still derived from real care and must not be treated as HETU synthetic fiction.",
+    "access_requirements": "Open PhysioNet download for the demo project (see the official Files section). This is not a waiver of the DUA for the full credentialed MIMIC-IV database.",
+    "privacy_notes": "De-identified subset; still real-derived EHR. Do not attempt re-identification. Demo is public metadata/schema practice, not a license to copy records into SFT JSONL.",
+    "license_or_terms": "See the official PhysioNet demo project page for the posted license of the demo files (distinct from full MIMIC-IV credentialed terms)."
+  },
+  {
+    "dataset_name": "National NLP Clinical Challenges (n2c2) research data sets",
+    "source_organization": "Harvard Medical School Department of Biomedical Informatics (continuing former i2b2 NLP shared tasks)",
+    "official_url": "https://n2c2.dbmi.hms.harvard.edu/data-sets",
+    "data_type": "Fully de-identified clinical notes and shared-task annotations (medications, concepts, relations, longitudinal records depending on year). Individual registration.",
+    "usefulness_for_hetu": "Established clinical NLP benchmarks for medications, concepts, and longitudinal notes. Useful for evaluating extractors that might later feed HETU-style contradiction detection. Challenge labels are not HETU root-cause labels.",
+    "access_requirements": "Each user must register, access independently through the DBMI Data Portal, and honor the n2c2 Data Use Agreement. Files must not be shared with others or posted to GitHub.",
+    "privacy_notes": "De-identified notes remain restricted by DUA. Do not redistribute.",
+    "license_or_terms": "n2c2 Data Use Agreement (academic and corporate previews linked from https://n2c2.dbmi.hms.harvard.edu/data-use-agreement)."
+  }
+]

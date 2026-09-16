@@ -3,7 +3,12 @@ import { Navigate, useSearchParams } from "react-router-dom";
 import { api } from "../api";
 import { useAuth } from "../auth";
 import AppShell, { Tabs } from "../components/AppShell";
-import { ConsentCenter, CorrectionForm, ExplainerView, RecordsTimeline } from "../components/CarePanels";
+import {
+  ConsentCenter,
+  CorrectionForm,
+  ExplainerView,
+  PatientRecordsDashboard,
+} from "../components/CarePanels";
 import SendReport from "../components/SendReport";
 import { buildReport } from "../medreaStore";
 
@@ -14,27 +19,36 @@ export default function PatientView() {
   const patient = session?.patient;
   const [tab, setTab] = useState(params.get("tab") || "records");
   const [diagnoses, setDiagnoses] = useState([]);
+  const [timeline, setTimeline] = useState([]);
   const [access, setAccess] = useState([]);
   const [corrections, setCorrections] = useState([]);
   const [explainer, setExplainer] = useState(null);
   const [flags, setFlags] = useState([]);
+  const [conversations, setConversations] = useState([]);
+  const [doctors, setDoctors] = useState([]);
   const [field, setField] = useState("conditions");
   const [proposed, setProposed] = useState("");
   const [error, setError] = useState("");
 
   async function reload() {
-    const [dx, acc, cor, exp, fl] = await Promise.all([
+    const [dx, acc, cor, exp, fl, items, conv, circle] = await Promise.all([
       api.diagnoses(patient.id),
       api.access(),
       api.corrections(patient.id),
       api.explainer(),
       api.flags(patient.id),
+      api.timeline(patient.id),
+      api.conversations(),
+      api.doctors(),
     ]);
     setDiagnoses(dx);
     setAccess(acc);
     setCorrections(cor);
     setExplainer(exp);
     setFlags(fl);
+    setTimeline(items);
+    setConversations(conv);
+    setDoctors(circle);
   }
 
   useEffect(() => {
@@ -73,6 +87,17 @@ export default function PatientView() {
     }
   }
 
+  async function uploadReport(form) {
+    const result = await api.uploadReport(form);
+    await reload();
+    return result;
+  }
+
+  async function respondGap(flagId, body) {
+    await api.gapResponse(flagId, body);
+    await reload();
+  }
+
   if (!session?.user) return <Navigate to="/" replace />;
   if (session.user.role !== "patient") {
     return <Navigate to={`/${session.user.role}`} replace />;
@@ -106,7 +131,16 @@ export default function PatientView() {
       ) : null}
       <Tabs tabs={tabs} active={tab} onChange={chooseTab} />
       {tab === "records" ? (
-        <RecordsTimeline diagnoses={diagnoses} empty="No records yet." />
+        <PatientRecordsDashboard
+          canWrite={!isMinor}
+          patient={patient}
+          timeline={timeline}
+          flags={flags}
+          conversations={conversations}
+          doctors={doctors}
+          onUpload={uploadReport}
+          onGap={respondGap}
+        />
       ) : null}
       {tab === "explainer" ? <ExplainerView explainer={explainer} /> : null}
       {tab === "consent" ? (

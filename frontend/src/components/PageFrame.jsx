@@ -1,56 +1,81 @@
+import { useLocation } from "react-router-dom";
+
 export default function PageFrame() {
+  const pathname = useLocation().pathname;
+  const standalone = pathname.startsWith("/guest-judge") || pathname.startsWith("/doctor/signup");
+  if (standalone) return null;
+  const hideCaptions = pathname === "/";
+
   return (
-    <div className="pointer-events-none fixed inset-3 z-40 sm:inset-4" aria-hidden>
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden>
+      <div className="absolute inset-0 bg-[#e7faf4]" />
+
       <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 1600 900">
         <path
-          d="M318 36 H1268 L1544 36 C1572 36 1578 58 1578 82 V818 C1578 852 1548 868 1514 868 H86 C52 868 22 848 22 814 V128 L22 78 L86 36 H318"
+          d="M0 210 C240 40 460 250 780 130 C1080 20 1280 190 1600 80 L1600 900 L0 900 Z"
+          fill="rgba(2,195,154,0.22)"
+        />
+        <path
+          d="M0 320 C300 140 540 340 900 230 C1180 150 1380 280 1600 180 L1600 900 L0 900 Z"
+          fill="rgba(2,195,154,0.16)"
+        />
+        <path
+          d="M318 28 H1248 L1528 28 C1558 28 1572 48 1572 78 V822 C1572 858 1540 874 1504 874 H96 C58 874 28 854 28 816 V118 L28 72 L96 28 H318"
           fill="none"
           stroke="#02c39a"
-          strokeWidth="2.4"
+          strokeWidth="3.2"
           vectorEffect="non-scaling-stroke"
           strokeLinejoin="round"
         />
         <path
-          d="M1268 36 L1310 78 H1544"
+          d="M1248 28 L1298 78 H1528"
           fill="none"
           stroke="#02c39a"
-          strokeWidth="2.4"
+          strokeWidth="3.2"
           vectorEffect="non-scaling-stroke"
-          opacity="0.55"
         />
       </svg>
 
-      <svg className="absolute inset-x-8 bottom-6 h-40 w-auto max-w-none sm:inset-x-12" viewBox="0 0 1600 220" preserveAspectRatio="none">
-        <path
-          d="M0 180 C220 40 420 210 720 120 C980 40 1180 160 1600 70 L1600 220 L0 220 Z"
-          fill="rgba(2,195,154,0.14)"
-        />
-        <path
-          d="M0 200 C280 90 520 200 860 150 C1140 100 1340 170 1600 110 L1600 220 L0 220 Z"
-          fill="rgba(2,195,154,0.1)"
-        />
-      </svg>
+      {hideCaptions ? null : (
+        <div className="absolute right-10 top-6 hidden items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.2em] text-charcoal/55 sm:flex">
+          <span>People</span>
+          <span className="text-mint">|</span>
+          <span>Context</span>
+          <span className="text-mint">|</span>
+          <span>Better care</span>
+          <span className="h-px w-8 bg-mint" />
+          <span className="h-2 w-2 rounded-full bg-mint" />
+        </div>
+      )}
 
       <svg
-        className="absolute right-5 top-[58%] hidden h-36 w-24 opacity-35 sm:block"
-        viewBox="0 0 80 140"
+        className="absolute right-6 top-[38%] hidden h-52 w-28 text-mint sm:block"
+        viewBox="0 0 80 160"
         fill="none"
-        stroke="#02c39a"
-        strokeWidth="1.2"
+        stroke="currentColor"
+        strokeWidth="1.6"
       >
-        <path d="M40 8 L62 21 V47 L40 60 L18 47 V21 Z" />
-        <path d="M40 52 L62 65 V91 L40 104 L18 91 V65 Z" />
-        <path d="M40 78 L62 91 V117 L40 130 L18 117 V91 Z" />
-        <path d="M28 78 H52 M40 72 V84" opacity="0.8" />
-        <rect x="34" y="100" width="12" height="14" rx="1.5" />
-        <path d="M40 118 L34 124 H46 Z" />
+        <path d="M40 8 L66 23 V53 L40 68 L14 53 V23 Z" />
+        <path d="M28 36 H52 M40 28 V44" />
+        <path d="M40 58 L66 73 V103 L40 118 L14 103 V73 Z" />
+        <rect x="32" y="82" width="16" height="18" rx="1.5" />
+        <path d="M40 108 L32 116 H48 Z" />
+        <path d="M40 108 L66 123 V153 L40 168 L14 153 V123 Z" opacity="0.85" />
+        <path d="M40 138 L50 146 L40 154 L30 146 Z" />
       </svg>
 
-      <img
-        src="/hetu-icon.png?v=3"
-        alt=""
-        className="absolute bottom-20 left-6 w-36 opacity-[0.05] sm:left-8 sm:w-48"
-      />
+      {hideCaptions ? null : (
+        <>
+          <div className="absolute bottom-6 left-10 hidden text-[10px] font-semibold uppercase tracking-[0.22em] text-charcoal/50 sm:block">
+            Understand <span className="mx-2 text-mint">|</span> Connect{" "}
+            <span className="mx-2 text-mint">|</span> Heal
+          </div>
+          <div className="absolute bottom-6 right-10 hidden items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-charcoal/50 sm:flex">
+            <span className="h-px w-10 bg-mint" />
+            A more complete patient story
+          </div>
+        </>
+      )}
     </div>
   );
 }

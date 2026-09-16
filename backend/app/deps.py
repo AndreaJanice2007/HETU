@@ -69,7 +69,7 @@ def require_doctor_access(db: Session, doctor: Doctor, patient: Patient) -> None
     if doctor_access_status(db, doctor.id, patient.id) != "approved":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
-            detail="Patient has not approved access",
+            detail="Patient has not approved access to previous treatment",
         )
 
 

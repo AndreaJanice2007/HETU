@@ -27,9 +27,9 @@ export default function SendReport({ userId, report }) {
           <button
             type="button"
             onClick={sendToMedrea}
-            className="w-full rounded-[10px] px-3 py-2 text-left text-sm font-medium text-mint hover:bg-mint/10"
+            className="w-full rounded-[10px] px-3 py-2 text-left text-sm font-bold uppercase tracking-wide text-mint hover:bg-mint/10"
           >
-            Medrea
+            MEDREA
           </button>
         </div>
       ) : null}

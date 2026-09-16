@@ -1,11 +1,15 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import PageFrame from "./components/PageFrame";
 import { roleHome, useAuth } from "./auth";
+import DoctorSignup from "./pages/DoctorSignup";
 import DoctorView from "./pages/DoctorView";
+import GuestJudge from "./pages/GuestJudge";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import MedreaPage from "./pages/MedreaPage";
 import PatientView from "./pages/PatientView";
+import RankBoard from "./pages/RankBoard";
+import Signup from "./pages/Signup";
 import SurrogateView from "./pages/SurrogateView";
 
 function Guard({ role, children }) {
@@ -24,7 +28,11 @@ export default function App() {
       <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/guest-judge/:token" element={<GuestJudge />} />
+      <Route path="/doctor/signup" element={<DoctorSignup />} />
       <Route path="/medrea" element={<MedreaPage />} />
+      <Route path="/rank" element={<RankBoard />} />
       <Route
         path="/patient"
         element={

@@ -3,7 +3,7 @@ import { Navigate, useSearchParams } from "react-router-dom";
 import { api } from "../api";
 import { useAuth } from "../auth";
 import AppShell, { Tabs } from "../components/AppShell";
-import { ConsentCenter, CorrectionForm, ExplainerView, RecordsTimeline } from "../components/CarePanels";
+import { ConsentCenter, CorrectionForm, ExplainerView, PatientRecordsDashboard, RecordsTimeline } from "../components/CarePanels";
 import SendReport from "../components/SendReport";
 import { buildReport } from "../medreaStore";
 
@@ -13,30 +13,38 @@ export default function SurrogateView() {
   const patient = session?.surrogate?.linked_patient;
   const [tab, setTab] = useState(params.get("tab") || "records");
   const [diagnoses, setDiagnoses] = useState([]);
+  const [timeline, setTimeline] = useState([]);
   const [access, setAccess] = useState([]);
   const [corrections, setCorrections] = useState([]);
   const [explainer, setExplainer] = useState(null);
   const [flags, setFlags] = useState([]);
+  const [conversations, setConversations] = useState([]);
+  const [doctors, setDoctors] = useState([]);
   const [field, setField] = useState("conditions");
   const [proposed, setProposed] = useState("");
   const [error, setError] = useState("");
 
-  const disclosed = diagnoses.filter((d) => d.disclose_to_patient);
   const notified = diagnoses.filter((d) => !d.disclose_to_patient);
 
   async function reload() {
-    const [dx, acc, cor, exp, fl] = await Promise.all([
+    const [dx, acc, cor, exp, fl, items, conv, circle] = await Promise.all([
       api.diagnoses(patient.id),
       api.access(),
       api.corrections(patient.id),
       api.explainer(),
       api.flags(patient.id),
+      api.timeline(patient.id),
+      api.conversations(),
+      api.doctors(),
     ]);
     setDiagnoses(dx);
     setAccess(acc);
     setCorrections(cor);
     setExplainer(exp);
     setFlags(fl);
+    setTimeline(items);
+    setConversations(conv);
+    setDoctors(circle);
   }
 
   useEffect(() => {
@@ -106,7 +114,26 @@ export default function SurrogateView() {
         />
       </div>
       <Tabs tabs={tabs} active={tab} onChange={chooseTab} />
-      {tab === "records" ? <RecordsTimeline diagnoses={disclosed} empty="No disclosed records yet." /> : null}
+      {tab === "records" ? (
+        <PatientRecordsDashboard
+          canWrite
+          viewerRole="surrogate"
+          patient={patient}
+          timeline={timeline}
+          flags={flags}
+          conversations={conversations}
+          doctors={doctors}
+          onUpload={async (form) => {
+            const result = await api.uploadReport(form);
+            await reload();
+            return result;
+          }}
+          onGap={async (flagId, body) => {
+            await api.gapResponse(flagId, body);
+            await reload();
+          }}
+        />
+      ) : null}
       {tab === "notified" ? (
         <section className="rounded-xl border border-charcoal/20 bg-offwhite p-6">
           <div className="mb-4 inline-flex rounded-[10px] bg-charcoal px-2.5 py-1 text-xs font-medium text-offwhite">

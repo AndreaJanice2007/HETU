@@ -1,4 +1,4 @@
-export const SEVERITY_RANK = { high: 0, medium: 1, low: 2 };
+export const SEVERITY_RANK = { critical: 0, high: 1, medium: 2, low: 3 };
 
 export function formatWhen(value) {
   if (!value) return "";
@@ -14,7 +14,17 @@ export function notificationTarget(role, note) {
     return role === "doctor" ? `${home}?tab=patients` : `${home}?tab=consent`;
   }
   if (note.type === "diagnosis_to_surrogate") return "/surrogate?tab=notified";
-  if (note.type === "correction_submitted") return `${home}?tab=correction`;
+  if (note.type === "correction_submitted" || note.type === "correction_outcome") {
+    return role === "doctor" ? `${home}` : `${home}?tab=correction`;
+  }
+  if (
+    note.type?.includes("conversation") ||
+    note.type === "senior_review_complete" ||
+    note.type === "senior_review_assigned"
+  ) {
+    return role === "doctor" ? `${home}?conversation=${note.related_id}` : `${home}?tab=records`;
+  }
+  if (note.type === "gap_response") return role === "doctor" ? `${home}?flag=${note.related_id}` : `${home}?tab=records`;
   return `${home}?tab=records`;
 }
 
@@ -26,7 +36,7 @@ export function EmptyState({ children }) {
 
 export function SeverityBadge({ severity }) {
   const tone =
-    severity === "high"
+    severity === "critical" || severity === "high"
       ? "bg-severity-high/15 text-severity-high"
       : severity === "medium"
         ? "bg-severity-medium/15 text-severity-medium"
@@ -40,7 +50,7 @@ export function SeverityBadge({ severity }) {
 
 export function StatusPill({ status }) {
   const resolved = status === "resolved";
-  const review = status === "under_review";
+  const review = status === "under_review" || status === "pending_review";
   return (
     <span
       className={`inline-flex rounded-full px-2.5 py-1 text-xs font-medium ${
@@ -73,7 +83,7 @@ export function AccessStatus({ status }) {
   }
   return (
     <span className="inline-flex rounded-full bg-[#e6e6e3] px-2.5 py-1 text-xs font-medium text-charcoal/60">
-      {status === "pending" ? "Pending" : "No request"}
+      {status === "pending" ? "History pending" : "Reports only"}
     </span>
   );
 }

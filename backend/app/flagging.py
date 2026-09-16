@@ -1,8 +1,9 @@
 from sqlalchemy.orm import Session
 
 from app.age import is_minor
-from app.comparison import conflict_severity, labels_conflict
-from app.models import Diagnosis, Flag, Notification, Patient, User
+from app.models import Diagnosis, Flag, Notification, Patient
+from logic.escalation import apply_flag_escalation_on_create
+from logic.flag_detection import detect_conflicts
 
 
 def notify(db: Session, user_id: int, ntype: str, message: str, related_id: int | None = None) -> None:
@@ -16,48 +17,13 @@ def notify(db: Session, user_id: int, ntype: str, message: str, related_id: int 
     )
 
 
-def existing_open_flag(db: Session, diag_a_id: int, diag_b_id: int) -> Flag | None:
-    pair = tuple(sorted((diag_a_id, diag_b_id)))
-    flags = (
-        db.query(Flag)
-        .filter(Flag.status.in_(("open", "under_review")))
-        .all()
-    )
-    for flag in flags:
-        if tuple(sorted((flag.diagnosis_id_1, flag.diagnosis_id_2))) == pair:
-            return flag
-    return None
-
-
 def evaluate_new_diagnosis(db: Session, diagnosis: Diagnosis) -> list[Flag]:
-    """Compare a new diagnosis against other doctors' labels and raise flags."""
+    """Compare a new diagnosis against other doctors' findings and raise flags."""
     patient = db.get(Patient, diagnosis.patient_id)
-    others = (
-        db.query(Diagnosis)
-        .filter(
-            Diagnosis.patient_id == diagnosis.patient_id,
-            Diagnosis.doctor_id != diagnosis.doctor_id,
-            Diagnosis.id != diagnosis.id,
-        )
-        .all()
-    )
-    created: list[Flag] = []
-    for other in others:
-        if not labels_conflict(diagnosis.diagnosis_label, other.diagnosis_label):
-            continue
-        if existing_open_flag(db, diagnosis.id, other.id):
-            continue
-        flag = Flag(
-            patient_id=diagnosis.patient_id,
-            diagnosis_id_1=other.id,
-            diagnosis_id_2=diagnosis.id,
-            status="open",
-            severity=conflict_severity(diagnosis.diagnosis_label, other.diagnosis_label),
-            root_cause="Label mismatch",
-        )
-        db.add(flag)
-        db.flush()
-        created.append(flag)
+    created = detect_conflicts(db, diagnosis)
+    for flag in created:
+        apply_flag_escalation_on_create(db, flag)
+        other = flag.diagnosis_1 if flag.diagnosis_id_2 == diagnosis.id else flag.diagnosis_2
         _notify_flag_raised(db, patient, flag, diagnosis, other)
     return created
 

@@ -55,7 +55,7 @@ bad = c.post(
 print("minor write", bad.status_code, bad.json()["detail"])
 assert bad.status_code == 403
 
-far = c.post("/api/login", json={"email": "farah.khan@hetu.demo", "password": "FarahKhan27"})
+far = c.post("/api/login", json={"email": "farah.khan@hetu.demo", "password": "AyaanKhan12"})
 fh = {"X-User-Id": str(far.json()["user"]["id"])}
 acc = c.get("/api/access-requests", headers=fh).json()
 pending = next(a for a in acc if a["status"] == "pending")

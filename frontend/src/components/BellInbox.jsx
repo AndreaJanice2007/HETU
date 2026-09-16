@@ -44,7 +44,7 @@ export default function BellInbox({ role, onOpen }) {
     <div className="relative" ref={box}>
       <button
         type="button"
-        className="relative grid h-10 w-10 place-items-center rounded-[10px] text-offwhite hover:bg-white/10"
+        className="relative grid h-10 w-10 place-items-center rounded-[10px] text-charcoal hover:bg-charcoal/8"
         onClick={() => {
           setOpen((v) => !v);
           load().catch(() => {});

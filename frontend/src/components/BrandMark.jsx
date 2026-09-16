@@ -10,9 +10,14 @@ export default function BrandMark({ size = "md", className = "" }) {
       aria-label="Hetu"
     >
       <img
-        src="/hetu-icon.png?v=3"
+        src="/hetu-mark.png"
         alt=""
         className="h-[0.92em] w-auto shrink-0 object-contain"
+        style={{
+          filter: large
+            ? "drop-shadow(1.5px 0 0 #111) drop-shadow(-1.5px 0 0 #111) drop-shadow(0 1.5px 0 #111) drop-shadow(0 -1.5px 0 #111) drop-shadow(1px 1px 0 #111) drop-shadow(-1px -1px 0 #111) drop-shadow(1px -1px 0 #111) drop-shadow(-1px 1px 0 #111)"
+            : "drop-shadow(0.8px 0 0 #111) drop-shadow(-0.8px 0 0 #111) drop-shadow(0 0.8px 0 #111) drop-shadow(0 -0.8px 0 #111) drop-shadow(0.6px 0.6px 0 #111) drop-shadow(-0.6px -0.6px 0 #111)",
+        }}
       />
       {letters.map((letter) => (
         <span

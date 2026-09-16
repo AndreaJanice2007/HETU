@@ -6,3 +6,5 @@ __pycache__/
 *.pyc
 hetu.db
 .DS_Store
+backend/reports/*
+!backend/reports/.gitkeep

@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../auth";
 import BellInbox from "./BellInbox";
-import BrandMark from "./BrandMark";
 import MedreaFloat from "./MedreaFloat";
 
 export default function AppShell({ title, role, children }) {
@@ -10,40 +10,38 @@ export default function AppShell({ title, role, children }) {
   const user = session?.user;
 
   return (
-    <div className="min-h-[calc(100vh-28px)] bg-offwhite text-charcoal">
-      <header className="sticky top-[14px] z-30 flex items-center justify-between bg-charcoal px-5 py-3 text-offwhite">
-        <div className="flex items-center gap-3">
-          <BrandMark />
-          <span className="hidden text-xs text-offwhite/55 sm:inline">{title}</span>
+    <div className="relative z-10 min-h-screen text-charcoal">
+      <div className="flex items-center justify-end gap-1 px-10 pt-20 sm:px-16">
+        <span className="mr-auto text-sm font-semibold uppercase tracking-wide text-charcoal/70">{title}</span>
+        <Link to="/rank" className="mr-2 text-sm font-medium text-mint">
+          Best doctors
+        </Link>
+        <BellInbox role={role} />
+        <div className="relative">
+          <button
+            type="button"
+            className="grid h-10 w-10 place-items-center rounded-full bg-charcoal/8 text-sm font-semibold text-charcoal"
+            onClick={() => setMenu((v) => !v)}
+            aria-label="Profile"
+          >
+            {(user?.name || "?").split(" ").map((p) => p[0]).slice(0, 2).join("")}
+          </button>
+          {menu ? (
+            <div className="absolute right-0 mt-2 w-56 rounded-xl bg-offwhite p-3 text-charcoal shadow-[0_16px_40px_rgba(43,45,47,0.12)] ring-1 ring-charcoal/10">
+              <div className="text-sm font-semibold">{user?.name}</div>
+              <div className="mt-0.5 text-xs capitalize text-charcoal/50">{user?.role}</div>
+              <button
+                type="button"
+                className="mt-3 w-full rounded-[10px] bg-charcoal px-3 py-2 text-sm text-offwhite"
+                onClick={logout}
+              >
+                Sign out
+              </button>
+            </div>
+          ) : null}
         </div>
-        <div className="flex items-center gap-1">
-          <BellInbox role={role} />
-          <div className="relative">
-            <button
-              type="button"
-              className="grid h-10 w-10 place-items-center rounded-full bg-white/10 text-sm font-semibold"
-              onClick={() => setMenu((v) => !v)}
-              aria-label="Profile"
-            >
-              {(user?.name || "?").split(" ").map((p) => p[0]).slice(0, 2).join("")}
-            </button>
-            {menu ? (
-              <div className="absolute right-0 mt-2 w-56 rounded-xl bg-offwhite p-3 text-charcoal shadow-[0_16px_40px_rgba(43,45,47,0.12)] ring-1 ring-charcoal/10">
-                <div className="text-sm font-semibold">{user?.name}</div>
-                <div className="mt-0.5 text-xs capitalize text-charcoal/50">{user?.role}</div>
-                <button
-                  type="button"
-                  className="mt-3 w-full rounded-[10px] bg-charcoal px-3 py-2 text-sm text-offwhite"
-                  onClick={logout}
-                >
-                  Sign out
-                </button>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </header>
-      <main className="mx-auto w-full max-w-6xl px-5 py-10">{children}</main>
+      </div>
+      <main className="mx-auto w-full max-w-6xl px-8 pb-28 pt-6 sm:px-12">{children}</main>
       <MedreaFloat />
     </div>
   );
